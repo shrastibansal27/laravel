@@ -18,14 +18,18 @@ Auth::routes();
 Route::get('admin', 'LoginController@loginForm');
 Route::get('dashboard','AdminController@dashboard');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::get('user',function(){
-	return view('user/userlist');
-});
-Route::get('newuser',function(){
 
+Route::get('user', 'UserController@index');
+
+Route::get('newuser',function(){
 	return view('user/new');
 });
-Route::get('adduser','UserController@save');
+
+Route::get('deleteuser/{id}', 'UserController@destroy')->name('deleteuser');
+Route::get('edituser/{id}', 'UserController@edit');
+Route::post('updateuser/{id}', 'UserController@update');
+
+Route::post('adduser','UserController@save');
 Auth::routes();
 Route::get('/admin',function(){
 	return view('admin_template');

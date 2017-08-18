@@ -1,8 +1,7 @@
 @extends('user.header')
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-  <header class="main-header">
+<header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -49,9 +48,7 @@
       </div>
     </nav>
   </header>
-  <!-- jQuery 2.2.3 -->
- <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+    <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
@@ -79,18 +76,56 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>User Management</h1>
-      <a href="{{url('newuser')}}"><button type="button" class="user btn btn-primary">Add User</button></a>
+   <section class="content-header">
+      <h1>Update User</h1>
+      <br>
+<form role="form" action="{{url('/updateuser',$user->id)}}" method="POST">
+{{csrf_field()}}
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Username" value="{{$user->username}}">
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" name="email" class="form-control" id="inputUsername" placeholder="Email" value="{{$user->email}}">
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="text" name="fname" class="form-control" id="inputUsername" placeholder="firstname" value="{{$user->fname}}">
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="text" name="lname" class="form-control" id="inputUsername" placeholder="lastname" value="{{$user->lname}}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password">
+    </div>
+  </div>
+      <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Confirm Password</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputUsername" placeholder="confirm password">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
     </section>
 
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+</div>
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
@@ -98,7 +133,4 @@
     <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
-
-</body>
-<!-- ./wrapper -->
-
+  </body>
