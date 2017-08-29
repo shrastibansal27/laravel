@@ -1,54 +1,51 @@
 @extends('header')
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Employee</b></span>
+<header class="main-header">
+  <!-- Logo -->
+  <a href="index2.html" class="logo">
+    <span class="logo-mini"><b>A</b>LT</span>
+    <span class="logo-lg"><b>Employee</b></span>
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
     </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
+  <div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <!-- User Account: style can be found in dropdown.less -->
+      <li class="dropdown user user-menu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <img src="{{asset('bower_components/adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+      <span class="hidden-xs">Alexander Pierce</span>
       </a>
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-                    <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset('bower_components/adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="{{asset('bower_components/adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+      <ul class="dropdown-menu">
+      <!-- User image -->
+      <li class="user-header">
+      <img src="{{asset('bower_components/adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="{{ route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      <p>
+      Alexander Pierce - Web Developer
+      <small>Member since Nov. 2012</small>
+      </p>
+      </li>
+      <!-- Menu Footer-->
+      <li class="user-footer">
+      <div class="pull-left">
+      <a href="#" class="btn btn-default btn-flat">Profile</a>
       </div>
-    </nav>
-  </header>
+      <div class="pull-right">
+      <a href="{{ route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
+      </div>
+      </li>
+      </ul>
+      </li>
+      </ul>
+    </div>
+  </nav>
+</header>
   <!-- jQuery 2.2.3 -->
  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -106,8 +103,9 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>User Management</h1>
-      <a href="{{url('newuser')}}"><button type="button" class="user btn btn-primary">Add User</button></a>
+      <h1>Department Mangement</h1>
+      <br>
+      <a href="{{url('newdepart')}}"><button type="button" class="user btn btn-primary">Add new department</button></a>
     </section>
     <br>
  <form action= "" class="navbar-form navbar-left" role="search" method="GET"></form>
@@ -124,28 +122,19 @@
    <table class="table table-bordered">
   <thead>
     <tr>
-      <th>id</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>Department Name</th>
       <th>Action</th>    
     </tr>
   </thead>
-  <tbody>
-     @foreach($users as $u)
-    <tr>
-      <th scope="row">{{$u->id}}</th>
-      <td>{{$u->username}}</td>
-      <td>{{$u->email}}</td>
-      <td>{{$u->fname}}</td>
-      <td>{{$u->lname}}</td>
-      <td><a href="{{url('edituser',$u->id)}}"><button class="btn btn-warning" >Edit</button></a>
-      <a href="{{route('deleteuser', $u->id)}}"><button class="btn btn-danger">Delete</button></a>
-      </td>
-    </tr>
-    @endforeach 
-  </tbody>
+<tbody>
+  @foreach($depart as $d)
+  <tr>
+    <td>{{$d->id}}</td>
+    <td>{{$d->dept_name}}</td>
+  </tr>
+  @endforeach
+
+</tbody>
 </table>
 
     <!-- /.content -->
