@@ -34,7 +34,7 @@ Route::get('newuser',function(){ return view('user/new');});
 Route::get('deleteuser/{id}', 'UserController@destroy')->name('deleteuser');
 Route::get('edituser/{id}', 'UserController@edit');
 Route::post('updateuser/{id}', 'UserController@update');
-Route::post('adduser','UserController@save');
+Route::post('adduser','UserController@save') ;
 
 /* User Routes End here*/
 
