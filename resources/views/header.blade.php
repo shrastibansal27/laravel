@@ -59,7 +59,7 @@
 <!-- jQuery Knob Chart -->
 <script src="{{asset('bower_Components/adminlte/plugins/knob/jquery.knob.js')}}"></script>
 <!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js')}}"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js')}}"></script>-->
 <script src="{{asset('bower_Components/adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- datepicker -->
 <script src="{{asset('bower_Components/adminlte/plugins/datepicker/bootstrap-datepicker.js')}}"></script>

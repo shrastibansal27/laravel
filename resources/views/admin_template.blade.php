@@ -29,13 +29,21 @@
   <link rel="stylesheet" href="{{asset('bower_components/Adminlte/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('bower_components/Adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
-
+  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+    <style>
+       #map {
+            height: 312px;
+            width: 52%;
+       }
+    </style>
+  
+    
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -127,9 +135,25 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
-
+    <br>
+<div id="map"></div>
     <!-- /.content -->
   </div>
+  <script>
+      function initMap() {
+        var uluru = {lat: 19.121015, lng: 72.883412};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmYS3Aq_is5LtNAzTvvxx-9AWiI4CzGY0&callback=initMap">
+  </script>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">

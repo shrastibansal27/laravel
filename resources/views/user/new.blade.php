@@ -1,4 +1,4 @@
-@extends('user.header')
+@extends('header')
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <header class="main-header">
@@ -65,8 +65,6 @@
         </ul>
       </div>
       </div>
-    
-
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
      <ul class="sidebar-menu">
@@ -77,75 +75,85 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-  <div class="content-wrapper">
-   <section class="content-header">
-      <h1>User Management</h1>
-@if (isset($errors) && $errors->any())
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="alert alert-danger alert-alt">
-                <strong><i class="fa fa-bug fa-fw"></i>Warning</strong><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+        <!--<div class="content-wrapper">-->
+         <!--<section class="content-header">-->
+      		  <h1>User Management</h1>
+      	@if (isset($errors) && $errors->any())
+      		<div class="row">
+      			<div class="col-xs-12">
+      				<div class="alert alert-danger alert-alt">
+      					<strong><i class="fa fa-bug fa-fw"></i>Warning</strong><br>
+      					<ul>
+      						@foreach ($errors->all() as $error)
+      							<li>{{ $error }}</li>
+      						@endforeach
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+      		<br/>
+      	@endif
     </div>
-    <br/>
-@endif
-<form role="form" action="{{url('/adduser')}}" method="POST">
-{{csrf_field()}}
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Username</label>
-    <div class="col-sm-10">
-      <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Username">
+    <div class="modal-body">
+    	<form role="form" action="{{url('/adduser')}}" method="POST">
+        	{{csrf_field()}}
+        	  <div class="form-group row">
+          		<label class="col-sm-2 col-form-label">Username</label>
+          		<div class="col-sm-10">
+          		    <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Username">
+          		</div>
+        	  </div>
+        		<div class="form-group row">
+          		<label class="col-sm-2 col-form-label">Email</label>
+          		<div class="col-sm-10">
+          		    <input type="text" name="email" class="form-control" id="inputUsername" placeholder="Email">
+          		</div>
+          		<div class="row">
+          			<div class="col-xs-12">
+          				@if($errors->has('email'))
+          				<div class="alert alert-danger alert-alt">
+          				</div>
+          				@endif
+          			</div>
+          		</div>
+        	  </div>
+        		<div class="form-group row">
+        		<label class="col-sm-2 col-form-label">First Name</label>
+        		<div class="col-sm-10">
+        		  <input type="text" name="fname" class="form-control" id="inputUsername" placeholder="firstname">
+        		</div>
+        	  </div>
+        		<div class="form-group row">
+        		<label class="col-sm-2 col-form-label">Last Name</label>
+        		<div class="col-sm-10">
+        		  <input type="text" name="lname" class="form-control" id="inputUsername" placeholder="lastname">
+        		</div>
+        	  </div>
+        	  <div class="form-group row">
+        		<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        		<div class="col-sm-10">
+        		  <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password">
+        		</div>
+        	  </div>
+        		  <div class="form-group row">
+        		<label class="col-sm-2 col-form-label">Confirm Password</label>
+        		<div class="col-sm-10">
+        		  <input type="text" class="form-control" id="inputUsername" placeholder="confirm password">
+        		</div>
+        	  </div>
+        	  <button type="submit" class="btn btn-primary">Create</button>
+    	</form>
     </div>
+    <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+       <!-- </section>-->
+        <!-- /.content -->
   </div>
-    <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" name="email" class="form-control" id="inputUsername" placeholder="Email">
-    </div>
-    <div class="row">
-    	<div class="col-xs-12">
-    		@if($errors->has('email'))
-    		<div class="alert alert-danger alert-alt">
-            </div>
-            @endif
-    	</div>
-    </div>
-  </div>
-    <div class="form-group row">
-    <label class="col-sm-2 col-form-label">First Name</label>
-    <div class="col-sm-10">
-      <input type="text" name="fname" class="form-control" id="inputUsername" placeholder="firstname">
-    </div>
-  </div>
-    <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Last Name</label>
-    <div class="col-sm-10">
-      <input type="text" name="lname" class="form-control" id="inputUsername" placeholder="lastname">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password">
-    </div>
-  </div>
-      <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Confirm Password</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputUsername" placeholder="confirm password">
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Create</button>
-</form>
-    </section>
-    <!-- /.content -->
-  </div>
+</div>
 </div>
 
   <footer class="main-footer">

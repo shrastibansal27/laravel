@@ -1,7 +1,6 @@
 @extends('header')
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
   <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
@@ -68,10 +67,7 @@
         </ul>
       </div>
       </div>
-    
 
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
      <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview"><a href="#">Employee Management</a></li>
@@ -102,25 +98,53 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
+
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+{{config('app.key')}}
     <section class="content-header">
       <h1>User Management</h1>
       <a href="{{url('newuser')}}"><button type="button" class="user btn btn-primary">Add User</button></a>
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Sub-Category</button>
+       <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+        <form class="form-horizontal" method="POST" action="{{url('add_subcat')}}">
+        {{csrf_field()}}
+          <div class="form-group">
+            <label for="sub_category" class="col-md-4 control-label">Sub-Category Name</label>
+            <div class="col-md-6">
+              <input type="text"  class="form-control" name="sub_category" id="sub_category">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sub_category_info" class="col-md-4 control-label">Sub-Category Info</label>
+            <div class="col-md-6">
+               <input type="text" class="form-control" name="sub_category_info" id="sub_category_info">
+          </div>
+          </div> 
+           <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+          <input type="submit" name="save" value="save">
+          </div>
+          </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
     </section>
     <br>
- <form action= "" class="navbar-form navbar-left" role="search" method="GET"></form>
-  <label class="col-sm-2 col-form-label">Search</label>
-<div class="col-sm-10 input-group custom-search-form">
-    <input type="text" class="form-control" name="search" placeholder="Search...">
-    <span class="input-group-btn">
-        <button class="btn btn-default-sm" type="submit">
-            <i class="fa fa-search">
-        </button>
-    </span>
-</div>
-</form>
    <table class="table table-bordered">
   <thead>
     <tr>
@@ -145,14 +169,18 @@
       </td>
     </tr>
     @endforeach 
+
   </tbody>
+
 </table>
+{!! str_replace('/?', '?', $users->render()) !!}
 
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
+
       <b>Version</b> 2.3.8
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights

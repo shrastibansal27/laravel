@@ -43,3 +43,5 @@ Route::get('department','DepartmentController@index');
 Route::get('newdepart','DepartmentController@create');
 
 /*System Routes end here*/
+
+Route::post('add_subcat','UserController@store');
